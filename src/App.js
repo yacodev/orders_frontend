@@ -2,7 +2,7 @@ import { css, Global } from "@emotion/react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import { Login } from './pages/Login';
 import { Home } from "./pages/Home";
-import { SessionProvider } from "./contexts/SessionContext";
+import { SessionProvider } from "./contexts/sessionContext";
 import ProtectedRoute from './components/Routes/ProtectedRoute';
 
 const appStyles = css`

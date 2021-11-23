@@ -4,7 +4,7 @@ import { useContext, useState } from "react";
 import { LoginForm } from "../components/LoginForm";
 import { RegularM } from "../components/UI/Typography";
 
-import { SessionContext } from "../contexts/SessionContext";
+import { SessionContext } from "../contexts/sessionContext";
 import { Redirect } from "react-router";
 import { loginUp } from "../services/session_fetcher";
 import { setFetchUser } from "../services/user_fecther";
@@ -38,6 +38,7 @@ const ContainerNavBar = styled.div`
 `;
 const ContainerLogin = styled.div`
   background: #f6f6f9;
+  height:100vh;
 `;
 const Line = styled.div`
   background: ${(props) => (props.enable ? "#FA4A0C" : "#FFFFFF")};
@@ -92,7 +93,7 @@ export const Login = () => {
           )}
         </>
       ) : (
-        <Redirect to="/home" />
+        <Redirect to="/" />
       )}
     </ContainerLogin>
   );

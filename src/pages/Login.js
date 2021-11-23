@@ -1,12 +1,15 @@
 import styled from "@emotion/styled";
-import { LoginForm } from "../components/LoginForm";
-import logoApp from "../static/images/logoApp.png";
-import { RegularM } from "../components/UI/Typography";
 import { useContext, useState } from "react";
-import { loginUp } from "../services/session_fetcher";
+
+import { LoginForm } from "../components/LoginForm";
+import { RegularM } from "../components/UI/Typography";
+
 import { SessionContext } from "../contexts/SessionContext";
 import { Redirect } from "react-router";
-import { setFetchUser } from "../services/user_fecth";
+import { loginUp } from "../services/session_fetcher";
+import { setFetchUser } from "../services/user_fecther";
+import logoApp from "../static/images/logoApp.png";
+
 const HeaderLogin = styled.div`
   width: 414px;
   height: 341px;

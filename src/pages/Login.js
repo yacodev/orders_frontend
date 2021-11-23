@@ -17,6 +17,8 @@ const HeaderLogin = styled.div`
   box-shadow: 0px 4px 30px rgba(0, 0, 0, 0.06);
   border-bottom-left-radius: 30px;
   border-bottom-right-radius: 30px;
+  display:block;
+  margin:auto;
 `;
 const ContainerLogo = styled.div`
   width: 100%;
@@ -55,11 +57,13 @@ export const Login = () => {
 
   async function loginUser() {
     const token = await loginUp(ctx.user);
+    console.log("TOKEN", token);
     ctx.signIn(token);
   }
 
   async function registerUser() {
     await setFetchUser(ctx.user);
+    //////
     const token = await loginUp(ctx.user);
     ctx.signIn(token);
   }

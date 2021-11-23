@@ -3,7 +3,7 @@ import styled from "@emotion/styled";
 import { Input } from "./UI/Input";
 import { Button } from "./UI/Button";
 import { useContext, useState } from "react";
-import { SessionContext } from "../contexts/SessionContext";
+import { SessionContext } from "../contexts/sessionContext";
 
 const ContainerLogin = styled.div`
   display: flex;
@@ -29,11 +29,35 @@ export const LoginForm = (props) => {
 
   return (
     <ContainerLogin>
+      {
+        (props.type === 'sing-up'&&
+        (
+          <>
+            <Input
+              label="Name"
+              type="text"
+              width="100%"
+              marginTop="30px"
+              name="first_name"
+              onChange={(e) => handleForm(e)}
+            />
+            <Input
+              label="Last Name"
+              type="text"
+              width="100%"
+              marginTop="30px"
+              name="last_name"
+              onChange={(e) => handleForm(e)}
+            />
+          </>
+        )
+        )
+      }
       <Input
         label="Email address"
         type="email"
         width="100%"
-        marginTop="48px"
+        marginTop="30px"
         name="email"
         onChange={(e) => handleForm(e)}
       />
@@ -41,10 +65,11 @@ export const LoginForm = (props) => {
         label="Password"
         type="password"
         width="100%"
-        marginTop="60px"
+        marginTop="30px"
         name="password"
         onChange={(e) => handleForm(e)}
       />
+      
       <Button onClick={props.onClick} text={props.type} marginTop="100px" />
     </ContainerLogin>
   );

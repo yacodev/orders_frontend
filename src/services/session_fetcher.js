@@ -1,4 +1,5 @@
 export async function loginUp(data) {
+  console.log("DATA",data);
   const requestOptions = {
     method: "POST",
     headers: { "Content-Type": "application/json" },
@@ -6,11 +7,11 @@ export async function loginUp(data) {
   };
 
   return fetch(
-    "http://localhost:3001/api/session",
+    "https://orders-carlos.herokuapp.com/api/session",
     requestOptions
   )
     .then((res) => res.json())
-    .then((data) => data.token);
+    .then((data) => data.body);
 }
 
 export async function logOut() {
@@ -23,7 +24,7 @@ export async function logOut() {
   };
 
   return fetch(
-    "http://localhost:3001/api/session",
+    "https://orders-carlos.herokuapp.com/api/session",
     requestOptions
   );
 }

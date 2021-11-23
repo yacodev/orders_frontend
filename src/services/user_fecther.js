@@ -7,7 +7,7 @@ export async function setFetchUser(data) {
   };
 
   return fetch(
-    "http://localhost:3001/api/session/api/user",
+    "https://orders-carlos.herokuapp.com/api/user",
     requestOptions
   ).then((res) => res.json());
 }

@@ -1,8 +1,10 @@
 export async function getProducts() {
+  console.log("TOKEN SEND",sessionStorage.getItem("token") );
+
   const requestOptions = {
     method: "GET",
     headers: {
-      Authorization: `Bearer ${sessionStorage.getItem("token")}`,
+      Authorization: `Berear token=${sessionStorage.getItem("token")}`,
     },
   };
 

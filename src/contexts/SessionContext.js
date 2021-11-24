@@ -5,8 +5,11 @@ import useSessionReducer, {
 } from "../hooks/useSessionReducer";
 
 export const SessionContext = createContext({
-  data: null,
+  user: null,
+  setUser:()=>{},
   session: null,
+  products:null,
+  setProducts:()=>{},
   signIn: () => {},
   logout: () => {},
 });
@@ -14,6 +17,7 @@ export const SessionContext = createContext({
 export const SessionProvider = ({ children }) => {
   const [session, dispatch] = useSessionReducer();
   const [user, setUser] = useState();
+  const [products, setProducts] = useState([])
 
   function signIn(token) {
     dispatch({ type: SIGN_IN, token });
@@ -30,6 +34,8 @@ export const SessionProvider = ({ children }) => {
     logout,
     user,
     setUser,
+    products,
+    setProducts,
   }
 
   return (

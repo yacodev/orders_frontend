@@ -19,7 +19,6 @@ function sessionReducer(state, action) {
 export default function useSessionReducer() {
   const [state, dispatch] = useReducer(sessionReducer, {
     token: null,
-    profile: null,
   });
 
   return [state, dispatch];

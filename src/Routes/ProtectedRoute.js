@@ -1,13 +1,12 @@
 import { useContext } from "react";
 import { Route, Redirect } from "react-router";
-import { SessionContext } from "../../contexts/sessionContext";
+import { SessionContext } from "../contexts/sessionContext";
 
 export default function ProtectedRoute({
   component: Component,
   ...restOfProps
 }){
   const ctx = useContext(SessionContext)
-  console.log("CONTEXT",ctx)
   return(
     <Route
       {...restOfProps}

@@ -3,8 +3,9 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import { Login } from './pages/Login';
 import { Home } from "./pages/Home";
 import { SessionProvider } from "./contexts/sessionContext";
-import ProtectedRoute from './components/Routes/ProtectedRoute';
+import ProtectedRoute from './Routes/ProtectedRoute';
 import { ProductDetails } from "./pages/ProductDetails";
+import { Cart } from "./pages/Cart";
 
 const appStyles = css`
   display: flex;
@@ -46,6 +47,7 @@ function App() {
             <Switch>
               <Route path="/login" component={Login} />
               <ProtectedRoute path="/products/:id" component={ProductDetails} />
+              <ProtectedRoute path="/cart" component={Cart} />
               <ProtectedRoute path="/" component={Home} />
             </Switch>
           </Router>

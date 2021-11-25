@@ -1,7 +1,6 @@
 import { URL_API } from "../constants";
 
 export async function loginUp(data) {
-  console.log("DATA",data);
   const requestOptions = {
     method: "POST",
     headers: { "Content-Type": "application/json" },
@@ -20,7 +19,6 @@ export async function logOut() {
   const requestOptions = {
     method: "DELETE",
     headers: {
-      "Content-Type": "application/json",
       Authorization: `Bearer ${JSON.parse(sessionStorage.getItem("token"))}`,
     },
   };
@@ -28,5 +26,6 @@ export async function logOut() {
   return fetch(
     `${URL_API}/api/session`,
     requestOptions
-  );
+  )
+    .then((res) => res.json());
 }

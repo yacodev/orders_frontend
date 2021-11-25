@@ -7,7 +7,7 @@ import { RegularM } from "../components/UI/Typography";
 import { SessionContext } from "../contexts/sessionContext";
 import { Redirect } from "react-router";
 import { loginUp } from "../services/session_fetcher";
-import { setFetchUser } from "../services/user_fecther";
+import { createUser } from "../services/user_fecther";
 import logoApp from "../static/images/logoApp.png";
 
 const HeaderLogin = styled.div`
@@ -57,21 +57,27 @@ export const Login = () => {
   }
 
   async function loginUser() {
-    const token = await loginUp(ctx.user);
-    console.log("TOKEN", token);
-    ctx.signIn(token);
+    const responseApi = await loginUp(ctx.user);
+    if (responseApi === "data incorrect"){
+      ctx.errorLogin();
+    }else{
+      const token = responseApi.token;
+      const id = responseApi.id
+      ctx.signIn(token, id);
+    }
   }
 
   async function registerUser() {
-    await setFetchUser(ctx.user);
-    //////
-    const token = await loginUp(ctx.user);
-    ctx.signIn(token);
+    await createUser(ctx.user);
+    const responseApi = await loginUp(ctx.user);
+    const token = responseApi.token;
+    const id = responseApi.id
+    ctx.signIn(token, id);
   }
 
   return (
     <ContainerLogin>
-      {!ctx.session.token ? (
+      {(ctx.session.token==="data incorrect" || !ctx.session.token) ? (
         <>
           <HeaderLogin>
             <ContainerLogo>

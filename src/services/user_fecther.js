@@ -1,6 +1,6 @@
 import { URL_API } from "../constants";
 
-export async function setFetchUser(data) {
+export async function createUser(data) {
   const requestOptions = {
     method: "POST",
     headers: { "Content-Type": "application/json" },

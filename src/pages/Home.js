@@ -54,13 +54,12 @@ export const Home = () => {
         </div>
       </TopOptions>
       <ProductsContainer>
-        {/* {
+        {
           filteredProducts.length==0 ?
-            (products.map((product)=><ProductCard key={product.id} id={product.id} dish={product.name} picture_url={product.picture_url} price={product.price}></ProductCard>))
+            (products.map((product)=><ProductCard key={product.id} id={product.id} dish={product.name} picture_url={product.image} price={product.price}></ProductCard>))
           :
-          (filteredProducts.map((product)=><ProductCard key={product.id} dish={product.name} picture_url={product.picture_url} price={product.price}></ProductCard>))
-          } */}
-          LISTA DE PRODUCTS
+          (filteredProducts.map((product)=><ProductCard key={product.id} dish={product.name} picture_url={product.image} price={product.price}></ProductCard>))
+          }
       </ProductsContainer>
     </MainContainer>
   );

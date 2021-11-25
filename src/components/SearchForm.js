@@ -4,13 +4,15 @@ import searchicon from '../static/icons/searchicon.png';
 import chevronLeft from "../static/icons/chevron_left.svg";
 import { useHistory } from "react-router-dom";
 
-const StyledInput = styled.input`
-    width: fit-content;
+const InputContainer = styled.input`
+    width: 70vw;
+    height:30px;
     background-color: #F6F6F9;
-    border: none;
+    border: 2px solid #B8B8BB;
+    border-radius:10px;
 `;
 
-const ContainerSearchIcon = styled.div`
+const SearchIconContainer = styled.div`
     width:18px;
     height:18px;
 `;
@@ -26,13 +28,10 @@ const LinkButton = styled.button`
   cursor: pointer;
 `;
 
-const ContainerSearchForm = styled.div`
+const SearchFormContainer = styled.div`
     display: flex;
     flex-direction: row;
-    /* justify-content: center; */
     align-items: center;
-    /* margin-left:41px; */
-    /* margin-top: 52px; */
     margin-bottom: 49px;
     gap:16px;
 `;
@@ -42,7 +41,6 @@ export const SearchForm = ({products, setFilteredProducts}) => {
   const history = useHistory();
 
     const [searchTerm, setSearchTerm] = useState('');
-    // const [searchResults, setSearchResults] = useState([]);
 
     const handleChange = (e) => {
       setSearchTerm(e.target.value);
@@ -50,28 +48,27 @@ export const SearchForm = ({products, setFilteredProducts}) => {
 
     useEffect(() => {
       const results = products.filter(item => item.name.toLowerCase().includes(searchTerm));
-      console.log("results",results);
       setFilteredProducts(results);
     }, [searchTerm]);
 
     return (
-            <ContainerSearchForm>
+            <SearchFormContainer>
               {
                 searchTerm!==""?
                 <LinkButton size="24px" onClick={() => history.goBack()}>
                     <img src={chevronLeft} alt="Previous page" />
                 </LinkButton>
-                :             
-                <ContainerSearchIcon>
+                : 
+                <SearchIconContainer>
                     <img src={searchicon} alt=""/>
-                </ContainerSearchIcon>
+                </SearchIconContainer>
               }
-                <StyledInput 
-                  type="text"
-                  placeholder="Search"
-                  value={searchTerm}
-                  onChange= {handleChange}
-                  />
-            </ContainerSearchForm>
+              <InputContainer 
+                type="text"
+                placeholder="Search"
+                value={searchTerm}
+                onChange= {handleChange}
+              />
+            </SearchFormContainer>
     )
 }

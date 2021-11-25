@@ -3,12 +3,12 @@ import chevronLeft from "../static/icons/chevron_left.svg";
 import { SemiBoldL } from "./UI/Typography";
 import {  useHistory } from "react-router-dom";
 
-const StyledDiv = styled.div`
+const PageContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 100%;
-  height: 100%;
+  width: 100vw;
+  height: 100vh;
   padding: 50px 41px 32px 41px;
 `;
 
@@ -38,7 +38,7 @@ const Title = styled(SemiBoldL)`
 const NavBar = styled.nav`
   display: flex;
   justify-content: space-between;
-  width: 312px;
+  width: 512px;
   margin-top: auto;
 `;
 
@@ -50,12 +50,12 @@ export default function MainContainer({ children, title }) {
   const historyIcon = currentPath === "/history" ? "history-selected.svg" : "history.svg";
 
   return (
-    <StyledDiv>
+    <PageContainer>
       {
         title &&
         <>
           <Header>
-            <LinkButton size="24px" onClick={() => history.goBack()}>
+            <LinkButton size="34px" onClick={() => history.goBack()}>
             <img src={chevronLeft} alt="Previous page" />
             </LinkButton>
           </Header>
@@ -71,6 +71,6 @@ export default function MainContainer({ children, title }) {
           <img src={`/img/${historyIcon}`} alt="History link" />
         </LinkButton>
       </NavBar>
-    </StyledDiv>
+    </PageContainer>
   );
 }

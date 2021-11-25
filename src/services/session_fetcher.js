@@ -1,3 +1,5 @@
+import { URL_API } from "../constants";
+
 export async function loginUp(data) {
   console.log("DATA",data);
   const requestOptions = {
@@ -7,7 +9,7 @@ export async function loginUp(data) {
   };
 
   return fetch(
-    "https://orders-carlos.herokuapp.com/api/session",
+    `${URL_API}/api/session`,
     requestOptions
   )
     .then((res) => res.json())
@@ -19,12 +21,12 @@ export async function logOut() {
     method: "DELETE",
     headers: {
       "Content-Type": "application/json",
-      Authorization: `Bearer ${sessionStorage.getItem("token")}`,
+      Authorization: `Bearer ${JSON.parse(sessionStorage.getItem("token"))}`,
     },
   };
 
   return fetch(
-    "https://orders-carlos.herokuapp.com/api/session",
+    `${URL_API}/api/session`,
     requestOptions
   );
 }

@@ -32,7 +32,7 @@ function App() {
             padding: 0;
           }
           body {
-            background-color: #bcbaba;
+            background-color: ffffff;
           }
           a {
             text-decoration: none;

@@ -6,11 +6,13 @@ const InputText = styled.input`
   width: 100%;
   background: #f6f6f9;
 `;
+
 const Label = styled.label`
   font-size: 14px;
   line-height: 17px;
   color: #b8b8bb;
 `;
+
 const ContainerInput = styled.div`
   width: ${(props) => props.width};
   margin-top: ${(props) => props.marginTop};

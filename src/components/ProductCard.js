@@ -18,7 +18,6 @@ const CardContainer = styled.div`
 `
 
 export default function ProductCard(props) {
-  console.log(props.picture_url);
   return (
     <Link to={`/products/${props.id}`}>
       <CardContainer>

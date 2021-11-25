@@ -37,12 +37,13 @@ const Title = styled(SemiBoldL)`
   width: 288px;
   text-align: center;
   padding-right: 24px;
+  color:#FA4A0C;
 `;
 
 const ButtonContainer = styled.div`
   display: flex;
-  justify-content: space-between;
-  width: 512px;
+  justify-content: center;
+  width: 100vw;
   margin-top: auto;
 `;
 
@@ -51,9 +52,7 @@ export default function MainContainer({ children, title }) {
   const ctx = useContext(SessionContext);
 
   async function userLogout(){
-    console.log("VOY A DESLOGEARME");
-    const answer = await logOut();
-    console.log("ANSWER", answer);
+    await logOut();
     ctx.logout();
     history.push("/login");
   }
@@ -72,9 +71,11 @@ export default function MainContainer({ children, title }) {
         </>
       }
       {children}
-      <ButtonContainer>
-        <Button onClick={userLogout} text="Log Out"/>
-      </ButtonContainer>
+      {!title && (
+        <ButtonContainer>
+          <Button onClick={userLogout} text="Log Out"/>
+        </ButtonContainer>
+      )}
     </PageContainer>
   );
 }

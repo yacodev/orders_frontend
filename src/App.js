@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import { Login } from './pages/Login';
 import { Home } from "./pages/Home";
 import { SessionProvider } from "./contexts/sessionContext";
-import ProtectedRoute from './components/Routes/ProtectedRoute';
+import ProtectedRoute from './Routes/ProtectedRoute';
 import { ProductDetails } from "./pages/ProductDetails";
 import { Cart } from "./pages/Cart";
 

@@ -7,7 +7,7 @@ import { RegularM } from "../components/UI/Typography";
 import { SessionContext } from "../contexts/sessionContext";
 import { Redirect } from "react-router";
 import { loginUp } from "../services/session_fetcher";
-import { setFetchUser } from "../services/user_fecther";
+import { createUser } from "../services/user_fecther";
 import logoApp from "../static/images/logoApp.png";
 
 const HeaderLogin = styled.div`
@@ -58,7 +58,6 @@ export const Login = () => {
 
   async function loginUser() {
     const responseApi = await loginUp(ctx.user);
-    console.log("RESPONSE", responseApi);
     if (responseApi === "data incorrect"){
       ctx.errorLogin();
     }else{
@@ -69,10 +68,11 @@ export const Login = () => {
   }
 
   async function registerUser() {
-    await setFetchUser(ctx.user);
-    //////
-    const token = await loginUp(ctx.user);
-    ctx.signIn(token);
+    await createUser(ctx.user);
+    const responseApi = await loginUp(ctx.user);
+    const token = responseApi.token;
+    const id = responseApi.id
+    ctx.signIn(token, id);
   }
 
   return (

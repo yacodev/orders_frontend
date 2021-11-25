@@ -1,7 +1,6 @@
 import { URL_API } from "../constants";
 
 export async function loginUp(data) {
-  console.log("DATA",data);
   const requestOptions = {
     method: "POST",
     headers: { "Content-Type": "application/json" },

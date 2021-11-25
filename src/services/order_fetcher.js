@@ -1,7 +1,6 @@
 import { URL_API } from "../constants";
 
 export async function createOrder(data) {
-  console.log("CREATE ORDER",data);
   const requestOptions = {
     method: "POST",
     headers: {

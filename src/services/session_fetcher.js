@@ -1,3 +1,5 @@
+import { URL_API } from "../constants";
+
 export async function loginUp(data) {
   console.log("DATA",data);
   const requestOptions = {
@@ -7,7 +9,7 @@ export async function loginUp(data) {
   };
 
   return fetch(
-    "https://orders-carlos.herokuapp.com/api/session",
+    `${URL_API}/api/session`,
     requestOptions
   )
     .then((res) => res.json())
@@ -24,7 +26,7 @@ export async function logOut() {
   };
 
   return fetch(
-    "https://orders-carlos.herokuapp.com/api/session",
+    `${URL_API}/api/session`,
     requestOptions
   );
 }

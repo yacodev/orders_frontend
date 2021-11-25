@@ -1,3 +1,4 @@
+import { URL_API } from "../constants";
 
 export async function setFetchUser(data) {
   const requestOptions = {
@@ -7,7 +8,7 @@ export async function setFetchUser(data) {
   };
 
   return fetch(
-    "https://orders-carlos.herokuapp.com/api/user",
+    `${URL_API}/api/user`,
     requestOptions
   ).then((res) => res.json());
 }

@@ -1,0 +1,58 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CartItem renders correctly CartItem 1`] = `
+<div
+  className="css-1e0t6nl"
+>
+  <img
+    alt=""
+    className="css-bbanfq"
+    size="sm"
+    src="https://img.freepik.com/free-photo/top-view-green-cream-soups_23-2148519096.jpg"
+  />
+  <div
+    className="css-9o085f"
+    direction="column"
+  >
+    <p
+      className="css-12jf3i4"
+    >
+      Green cream
+    </p>
+    <div
+      className="css-u92498"
+    >
+      <p
+        className="css-1na6q0d"
+        color="#FA4A0C"
+      >
+        $
+        45.13
+      </p>
+      <div
+        className="css-okb5hw"
+      >
+        <button
+          className="css-8th4lx"
+          onClick={[Function]}
+        >
+           - 
+        </button>
+        <p
+          className="css-1u7p27y"
+        >
+           
+          1
+           
+        </p>
+        <button
+          className="css-8th4lx"
+          onClick={[Function]}
+        >
+           + 
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+`;

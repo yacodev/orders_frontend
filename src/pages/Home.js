@@ -12,8 +12,8 @@ const ProductsContainer=styled.div`
   padding-top: 45px;
   margin-bottom: 35px;
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  grid-template-rows: repeat(5, 1fr);
+  grid-template-columns: repeat(5, 1fr);
+  grid-template-rows: repeat(3, 1fr);
   grid-column-gap: 20px;
   grid-row-gap: 65px;
 

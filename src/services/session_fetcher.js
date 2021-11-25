@@ -20,7 +20,6 @@ export async function logOut() {
   const requestOptions = {
     method: "DELETE",
     headers: {
-      "Content-Type": "application/json",
       Authorization: `Bearer ${JSON.parse(sessionStorage.getItem("token"))}`,
     },
   };
@@ -28,5 +27,6 @@ export async function logOut() {
   return fetch(
     `${URL_API}/api/session`,
     requestOptions
-  );
+  )
+    .then((res) => res.json());
 }

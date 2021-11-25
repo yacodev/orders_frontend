@@ -2,6 +2,10 @@ import styled from "@emotion/styled";
 import chevronLeft from "../static/icons/chevron_left.svg";
 import { SemiBoldL } from "./UI/Typography";
 import {  useHistory } from "react-router-dom";
+import { Button } from "./UI/Button";
+import { useContext } from "react";
+import { SessionContext } from "../contexts/sessionContext";
+import { logOut } from "../services/session_fetcher";
 
 const PageContainer = styled.div`
   display: flex;
@@ -35,7 +39,7 @@ const Title = styled(SemiBoldL)`
   padding-right: 24px;
 `;
 
-const NavBar = styled.nav`
+const ButtonContainer = styled.div`
   display: flex;
   justify-content: space-between;
   width: 512px;
@@ -44,10 +48,15 @@ const NavBar = styled.nav`
 
 export default function MainContainer({ children, title }) {
   const history = useHistory();
-  const currentPath = history.location.pathname;
+  const ctx = useContext(SessionContext);
 
-  const homeIcon = currentPath === "/home" ? "home-selected.svg" : "home.svg";
-  const historyIcon = currentPath === "/history" ? "history-selected.svg" : "history.svg";
+  async function userLogout(){
+    console.log("VOY A DESLOGEARME");
+    const answer = await logOut();
+    console.log("ANSWER", answer);
+    ctx.logout();
+    history.push("/login");
+  }
 
   return (
     <PageContainer>
@@ -63,14 +72,9 @@ export default function MainContainer({ children, title }) {
         </>
       }
       {children}
-      <NavBar>
-        <LinkButton onClick={() => history.push("/home")}>
-          <img src={`/img/${homeIcon}`} alt="Home link" />
-        </LinkButton>
-        <LinkButton onClick={() => history.push("/history")}>
-          <img src={`/img/${historyIcon}`} alt="History link" />
-        </LinkButton>
-      </NavBar>
+      <ButtonContainer>
+        <Button onClick={userLogout} text="Log Out"/>
+      </ButtonContainer>
     </PageContainer>
   );
 }

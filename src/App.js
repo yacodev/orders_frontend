@@ -4,6 +4,7 @@ import { Login } from './pages/Login';
 import { Home } from "./pages/Home";
 import { SessionProvider } from "./contexts/sessionContext";
 import ProtectedRoute from './components/Routes/ProtectedRoute';
+import { ProductDetails } from "./pages/ProductDetails";
 
 const appStyles = css`
   display: flex;
@@ -44,6 +45,7 @@ function App() {
           <Router>
             <Switch>
               <Route path="/login" component={Login} />
+              <ProtectedRoute path="/products/:id" component={ProductDetails} />
               <ProtectedRoute path="/" component={Home} />
             </Switch>
           </Router>

@@ -57,9 +57,15 @@ export const Login = () => {
   }
 
   async function loginUser() {
-    const token = await loginUp(ctx.user);
-    console.log("TOKEN", token);
-    ctx.signIn(token);
+    const responseApi = await loginUp(ctx.user);
+    console.log("RESPONSE", responseApi);
+    if (responseApi === "data incorrect"){
+      ctx.errorLogin();
+    }else{
+      const token = responseApi.token;
+      const id = responseApi.id
+      ctx.signIn(token, id);
+    }
   }
 
   async function registerUser() {
@@ -71,7 +77,7 @@ export const Login = () => {
 
   return (
     <ContainerLogin>
-      {!ctx.session.token ? (
+      {(ctx.session.token==="data incorrect" || !ctx.session.token) ? (
         <>
           <HeaderLogin>
             <ContainerLogo>

@@ -1,5 +1,6 @@
 import { createContext, useState } from "react";
 import useSessionReducer, {
+  ERROR_LOGIN,
   SIGN_IN,
   SIGN_OUT,
 } from "../hooks/useSessionReducer";
@@ -8,34 +9,34 @@ export const SessionContext = createContext({
   user: null,
   setUser:()=>{},
   session: null,
-  products:null,
-  setProducts:()=>{},
   signIn: () => {},
   logout: () => {},
+  errorLogin: ()=>{},
 });
 
 export const SessionProvider = ({ children }) => {
   const [session, dispatch] = useSessionReducer();
   const [user, setUser] = useState();
-  const [products, setProducts] = useState([])
 
-  function signIn(token) {
-    dispatch({ type: SIGN_IN, token });
+  function signIn(token, id) {
+    dispatch({ type: SIGN_IN, token, id });
   }
 
   function logout() {
     dispatch({ type: SIGN_OUT });
   }
 
+  function errorLogin(){
+    dispatch({type: ERROR_LOGIN })
+  }
 
   const value = {
     session,
     signIn,
     logout,
+    errorLogin,
     user,
     setUser,
-    products,
-    setProducts,
   }
 
   return (

@@ -4,17 +4,30 @@ import { Input } from "./UI/Input";
 import { Button } from "./UI/Button";
 import { useContext, useState } from "react";
 import { SessionContext } from "../contexts/sessionContext";
+import { SemiBoldL, RegularS } from "./UI/Typography";
 
 const ContainerLogin = styled.div`
   display: flex;
   flex-direction: column;
   width: 314px;
   margin: auto;
+  
 `;
 
-export const LoginForm = (props) => {
-  const ctx = useContext(SessionContext);
+const ContainerMessageError = styled.div`
+  display:flex;
+  flex-direction:column;
+  margin-top:20px;
+  text-align:center;
+`
 
+export const LoginForm = ({type, onClick }) => {
+  const ctx = useContext(SessionContext);
+  let errorTryLogin = false;
+
+  if(ctx.session.token == "data incorrect"){
+    errorTryLogin = true;
+  }
   const [formValues, setFormValues] = useState({
     email: "",
     password: "",
@@ -30,7 +43,7 @@ export const LoginForm = (props) => {
   return (
     <ContainerLogin>
       {
-        (props.type === 'sing-up'&&
+        (type === 'sing-up'&&
         (
           <>
             <Input
@@ -69,8 +82,13 @@ export const LoginForm = (props) => {
         name="password"
         onChange={(e) => handleForm(e)}
       />
-      
-      <Button onClick={props.onClick} text={props.type} marginTop="100px" />
+      {errorTryLogin && (
+        <ContainerMessageError>
+          <SemiBoldL color="#FA4A0C"> Datos incorrectos </SemiBoldL>
+          <RegularS> Vuelva ingresar tu email y contraseña </RegularS>
+        </ContainerMessageError>
+        )}
+      <Button onClick={onClick} text={type} marginTop="100px" />
     </ContainerLogin>
   );
 };

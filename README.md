@@ -1,70 +1,73 @@
-# Getting Started with Create React App
+# FRONTEND ORDERS
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Implement fronted to Orders using React.
 
-## Available Scripts
+## Demo
 
-In the project directory, you can run:
+You can view the demo [here](https://yacodev.github.io/orders_frontend/).
 
-### `yarn start`
+## Estructura del repositorio
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+This repository has the following  organization:
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+    ├── src                     # React - app
+        ├── components
+            ├── UI                 # UI components: Button, Counter, Image, Input and Typography.
+            ├── CartItem           # Component
+            ├── LoginForm           # Component
+            ├── MainContainer       # Component
+            ├── ProductCard         # Component 
+            ├── SearchForm          # Component 
+        ├── Page
+            ├── Cart                # Page show product add into the cart.
+            ├── Login               # Page from login and  create user.
+            ├── Home                # Page show all products
+            ├── ProductDetail       # Page Show details of one product.
+        ├── Routes                      
+            ├── ProtectedRoute              
+        ├── Context                      
+            ├── SessionContext       #save the token and  Id of the user.
+        ├── Hooks                      
+            ├── useSessionReducer    # Reducer to manage user session.
+            ├── useTotalReducer      # Reducer to calculate total order
+        ├── services
+            ├── order_fecther         # Service to post order.
+            ├── product_fecther        # Service to get all products.
+            ├── session_fecther        # Service to create and delete session.
+            ├── user_fecther          # Service to create new User.
+        ├── static
+            ├── icon and images             # Images and Icons to header home pages.
+        ├── utils                      
+            ├── capitalizeString            # Function to capitalize a string
+    └── README.md                   # README
 
-### `yarn test`
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Details
 
-### `yarn build`
+* Using React hooks.
+* Using React components.
+* Using React Reducer.
+* Using React Context.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Library
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+* gh-pages -> to generate a github pages.
+* emotion-styled  -> to write css directly in the component
+* react-test-renderer  -> render to test.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## Request
 
-### `yarn eject`
+* Git
+* Node.js 14.15.2
+* yarn
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## Inicio de la aplicación
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+* Clone the repository.
+* yarn add
+* yarn start
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+## Tests
 
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `yarn build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+* testing-library/react, for execute  `yarn test`

@@ -21,7 +21,7 @@ export async function logOut() {
     method: "DELETE",
     headers: {
       "Content-Type": "application/json",
-      Authorization: `Bearer ${sessionStorage.getItem("token")}`,
+      Authorization: `Bearer ${JSON.parse(sessionStorage.getItem("token"))}`,
     },
   };
 

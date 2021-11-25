@@ -1,17 +1,19 @@
+import { URL_API } from "../constants";
+
 export async function getProducts() {
-  console.log("TOKEN SEND",sessionStorage.getItem("token") );
 
   const requestOptions = {
     method: "GET",
     headers: {
-      Authorization: `Berear token=${sessionStorage.getItem("token")}`,
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${JSON.parse(sessionStorage.getItem("token"))}`,
     },
   };
 
   return fetch(
-    "https://orders-carlos.herokuapp.com/api/product",
+    `${URL_API}/api/product`,
     requestOptions
   )
     .then((res) => res.json())
-    .then((data) => data);
+    .then((data) => data.body);
 }

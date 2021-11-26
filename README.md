@@ -4,7 +4,7 @@ Implement fronted to Orders using React.
 
 ## Demo
 
-You can view the demo [here](https://yacodev.github.io/deploy_orders/).
+You can view the demo [here](https://yacodev.github.io/orders_frontend/).
 
 ## Estructura del repositorio
 

@@ -1,8 +1,9 @@
 import {useState, useEffect} from 'react';
+import { useHistory } from "react-router-dom";
 import styled from "@emotion/styled";
+
 import searchicon from '../static/icons/searchicon.png';
 import chevronLeft from "../static/icons/chevron_left.svg";
-import { useHistory } from "react-router-dom";
 
 const InputContainer = styled.input`
     width: 70vw;

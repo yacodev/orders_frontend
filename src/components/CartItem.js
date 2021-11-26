@@ -1,8 +1,9 @@
 import styled from "@emotion/styled";
+import { useState, useEffect } from "react";
+
 import { Image } from "./UI/Image";
 import { SemiBoldS, SemiBoldM } from "./UI/Typography";
 import { Counter } from "./UI/Counter";
-import { useState, useEffect } from "react";
 import { ADD_ITEM } from "../constants";
 import capitalize from "../utils/capitalizeString";
 

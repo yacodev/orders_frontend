@@ -14,14 +14,14 @@ const ButtonBase = styled.button`
   }
 `;
 
-export const Button = (props) => {
+export const Button = ({onClick, disabled, marginTop, text}) => {
   return (
     <ButtonBase
-      onClick={props.onClick}
-      disabled={props.disabled}
-      marginTop={props.marginTop}
+      onClick={onClick}
+      disabled={disabled}
+      marginTop={marginTop}
     >
-      <RegularM className="text--button">{props.text}</RegularM>
+      <RegularM className="text--button">{text}</RegularM>
     </ButtonBase>
   );
 };

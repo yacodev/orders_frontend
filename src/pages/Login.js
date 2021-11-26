@@ -1,11 +1,11 @@
 import styled from "@emotion/styled";
 import { useContext, useState } from "react";
+import { SessionContext } from "../contexts/sessionContext";
+import { Redirect } from "react-router";
 
 import { LoginForm } from "../components/LoginForm";
 import { RegularM } from "../components/UI/Typography";
 
-import { SessionContext } from "../contexts/sessionContext";
-import { Redirect } from "react-router";
 import { loginUp } from "../services/session_fetcher";
 import { createUser } from "../services/user_fecther";
 import logoApp from "../static/images/logoApp.png";
@@ -20,7 +20,7 @@ const HeaderLogin = styled.div`
   display:block;
   margin:auto;
 `;
-const ContainerLogo = styled.div`
+const LogoContainer = styled.div`
   width: 100%;
   height: 300px;
   display: flex;
@@ -31,12 +31,12 @@ const ContainerLogo = styled.div`
     height: 71px;
   }
 `;
-const ContainerNavBar = styled.div`
+const NavBarContainer = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: space-around;
 `;
-const ContainerLogin = styled.div`
+const LoginContainer = styled.div`
   background: #f6f6f9;
   height:100vh;
 `;
@@ -49,6 +49,7 @@ const Line = styled.div`
 
 export const Login = () => {
   const [login, setLogin] = useState(true);
+  const [loading, setLoading] = useState(false);
   const ctx = useContext(SessionContext);
 
   const savedToken = JSON.parse(sessionStorage.getItem("token"));
@@ -57,6 +58,7 @@ export const Login = () => {
   }
 
   async function loginUser() {
+    setLoading(true);
     const responseApi = await loginUp(ctx.user);
     if (responseApi === "data incorrect"){
       ctx.errorLogin();
@@ -65,42 +67,45 @@ export const Login = () => {
       const id = responseApi.id
       ctx.signIn(token, id);
     }
+    setLoading(false);
   }
 
   async function registerUser() {
+    setLoading(true);
     await createUser(ctx.user);
     const responseApi = await loginUp(ctx.user);
     const token = responseApi.token;
     const id = responseApi.id
     ctx.signIn(token, id);
+    setLoading(false);
   }
 
   return (
-    <ContainerLogin>
+    <LoginContainer>
       {(ctx.session.token==="data incorrect" || !ctx.session.token) ? (
         <>
           <HeaderLogin>
-            <ContainerLogo>
+            <LogoContainer>
               <img src={logoApp} alt="logo" />
-            </ContainerLogo>
-            <ContainerNavBar>
+            </LogoContainer>
+            <NavBarContainer>
               <RegularM onClick={(e) => setLogin(true)}> Login </RegularM>
               <RegularM onClick={(e) => setLogin(false)}> Sign-up </RegularM>
-            </ContainerNavBar>
-            <ContainerNavBar>
+            </NavBarContainer>
+            <NavBarContainer>
               <Line enable={login} />
               <Line enable={!login} />
-            </ContainerNavBar>
+            </NavBarContainer>
           </HeaderLogin>
           {login ? (
-            <LoginForm type="login" onClick={(e) => loginUser()} />
+            <LoginForm type="login" onClick={(e) => loginUser()} loading={loading}/>
           ) : (
-            <LoginForm type="sing-up" onClick={(e) => registerUser()} />
+            <LoginForm type="sing-up" onClick={(e) => registerUser()} loading={loading}/>
           )}
         </>
       ) : (
         <Redirect to="/" />
       )}
-    </ContainerLogin>
+    </LoginContainer>
   );
 };

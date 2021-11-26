@@ -1,11 +1,12 @@
 import styled from "@emotion/styled";
-import chevronLeft from "../static/icons/chevron_left.svg";
-import { SemiBoldL } from "./UI/Typography";
 import {  useHistory } from "react-router-dom";
-import { Button } from "./UI/Button";
 import { useContext } from "react";
+
 import { SessionContext } from "../contexts/sessionContext";
+import { SemiBoldL } from "./UI/Typography";
+import { Button } from "./UI/Button";
 import { logOut } from "../services/session_fetcher";
+import chevronLeft from "../static/icons/chevron_left.svg";
 
 const PageContainer = styled.div`
   display: flex;

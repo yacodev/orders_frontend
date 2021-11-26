@@ -1,5 +1,6 @@
 import styled from "@emotion/styled";
 import { useHistory, useParams } from "react-router";
+
 import MainContainer from "../components/MainContainer";
 import { Image } from "../components/UI/Image";
 import { Button } from "../components/UI/Button";

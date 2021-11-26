@@ -1,12 +1,14 @@
 import styled from "@emotion/styled";
 import { useContext, useState } from "react";
 import { useHistory } from "react-router";
+
 import CartItem from "../components/CartItem";
 import MainContainer from "../components/MainContainer";
+import useTotalReducer from "../hooks/useTotalReducer";
+import noItems from "../static/images/nocartitems.png"
 import { Button } from "../components/UI/Button";
 import { RegularM, SemiBoldXL } from "../components/UI/Typography";
 import { SessionContext } from "../contexts/sessionContext";
-import useTotalReducer from "../hooks/useTotalReducer";
 import { createOrder } from "../services/order_fetcher";
 
 const CartContainer = styled.div`
@@ -66,7 +68,7 @@ export const Cart = () => {
     <MainContainer title="CART">
       {cartItems === null || cartItems.length === 0 ? (
         <NoCart>
-          <img src="/img/Nocartitems.png" alt="No cart items" />
+          <img src={noItems} alt="No cart items" />
         </NoCart>
       ) : (
         <CartContainer>

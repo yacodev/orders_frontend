@@ -1,4 +1,5 @@
 import styled from "@emotion/styled";
+
 import { Link } from "react-router-dom";
 import { Image } from "./UI/Image";
 import { SemiBoldL } from "./UI/Typography";

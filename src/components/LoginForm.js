@@ -1,12 +1,13 @@
 /** @jsxImportSource @emotion/react */
 import styled from "@emotion/styled";
+import { useContext, useState } from "react";
+
 import { Input } from "./UI/Input";
 import { Button } from "./UI/Button";
-import { useContext, useState } from "react";
 import { SessionContext } from "../contexts/sessionContext";
 import { SemiBoldL, RegularS } from "./UI/Typography";
 
-const ContainerLogin = styled.div`
+const LoginContainer = styled.div`
   display: flex;
   flex-direction: column;
   width: 314px;
@@ -14,14 +15,18 @@ const ContainerLogin = styled.div`
   
 `;
 
-const ContainerMessageError = styled.div`
+const MessageErrorContainer = styled.div`
   display:flex;
   flex-direction:column;
   margin-top:20px;
   text-align:center;
 `
+const LoadingContainer = styled.div`
+  margin-top:20px;
+  text-align:center;
+`
 
-export const LoginForm = ({type, onClick }) => {
+export const LoginForm = ({type, onClick, loading }) => {
   const ctx = useContext(SessionContext);
   let errorTryLogin = false;
 
@@ -41,7 +46,7 @@ export const LoginForm = ({type, onClick }) => {
   };
 
   return (
-    <ContainerLogin>
+    <LoginContainer>
       {
         (type === 'sing-up'&&
         (
@@ -83,12 +88,17 @@ export const LoginForm = ({type, onClick }) => {
         onChange={(e) => handleForm(e)}
       />
       {errorTryLogin && (
-        <ContainerMessageError>
+        <MessageErrorContainer>
           <SemiBoldL color="#FA4A0C"> Datos incorrectos </SemiBoldL>
           <RegularS> Vuelva ingresar tu email y contraseña </RegularS>
-        </ContainerMessageError>
+        </MessageErrorContainer>
+        )}
+      {loading && (
+        <LoadingContainer>
+          <SemiBoldL color="#FA4A0C"> Loading... </SemiBoldL>
+        </LoadingContainer>
         )}
       <Button onClick={onClick} text={type} marginTop="100px" />
-    </ContainerLogin>
+    </LoginContainer>
   );
 };

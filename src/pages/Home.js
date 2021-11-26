@@ -1,10 +1,13 @@
+import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
+import styled from "@emotion/styled";
+
 import MainContainer from "../components/MainContainer";
 import ProductCard from "../components/ProductCard";
-import { useEffect, useState } from "react";
-import styled from "@emotion/styled";
+import { SearchForm } from "../components/SearchForm";
+
 import { getProducts } from "../services/product_fetcher";
-import {SearchForm} from "../components/SearchForm";
-import { Link } from "react-router-dom";
+import iconCart from "../static/icons/shopping-cart.svg";
 
 const ProductsContainer=styled.div`
   margin-top: 20px;
@@ -49,7 +52,7 @@ export const Home = () => {
         <SearchForm products={products} setFilteredProducts={setFilteredProducts} />
         <div>
           <Link to="/cart">
-            <img src="/img/shopping-cart.svg" alt="icon shopign cart"/>
+            <img src={iconCart} alt="icon shoping cart"/>
           </Link>
         </div>
       </TopOptions>
